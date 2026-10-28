@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Math Quest before class</title>
+<meta name="description" content="A 5 minute pre-class quest for the child and a 1 minute prep for the parent, between booking and the Bhanzu demo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF8EF; --card:#FFFFFF; --ink:#1E1B3A; --muted:#6B6785; --line:#EEE6DA;
+  --brand:#5B3DF5; --brand-ink:#FFFFFF; --brand-soft:#EEEAFF;
+  --sun:#FFB020; --sun-soft:#FFF1D6; --mint:#16A34A; --mint-soft:#DCFCE7; --rose:#E11D48; --rose-soft:#FFE4EA;
+  --shadow:0 6px 24px rgba(30,27,58,.08);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14122A; --card:#1E1B3A; --ink:#F4F2FF; --muted:#A9A5C7; --line:#2E2A52;
+    --brand:#8B75FF; --brand-soft:#2A2456; --sun-soft:#3A2E12; --mint-soft:#123222; --rose-soft:#3A1420;
+    --shadow:0 6px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14122A; --card:#1E1B3A; --ink:#F4F2FF; --muted:#A9A5C7; --line:#2E2A52;
+  --brand:#8B75FF; --brand-soft:#2A2456; --sun-soft:#3A2E12; --mint-soft:#123222; --rose-soft:#3A1420;
+  --shadow:0 6px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:460px;margin:0 auto;padding:16px 16px 48px}
+h1,h2,h3,.fun{font-family:"Baloo 2",Inter,sans-serif;line-height:1.15;margin:0}
+h1{font-size:28px;font-weight:800}
+h2{font-size:22px;font-weight:800}
+h3{font-size:17px;font-weight:700}
+p{margin:.4em 0}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);margin-top:14px}
+.row{display:flex;gap:10px;align-items:center}
+.between{justify-content:space-between}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--brand-soft);color:var(--brand)}
+.pill.sun{background:var(--sun-soft);color:#9A5B00}
+.pill.mint{background:var(--mint-soft);color:var(--mint)}
+button,.btn{appearance:none;border:0;cursor:pointer;font:600 16px/1 Inter,sans-serif;border-radius:14px;padding:15px 18px;width:100%;background:var(--brand);color:var(--brand-ink);text-align:center;text-decoration:none;display:block;transition:transform .08s}
+button:active,.btn:active{transform:scale(.98)}
+button.ghost,.btn.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--brand)}
+button.link{background:none;color:var(--muted);padding:10px;font-weight:500;font-size:14px;text-decoration:underline}
+button:disabled{opacity:.45;cursor:not-allowed}
+.stack>*+*{margin-top:10px}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.logo{font-family:"Baloo 2";font-weight:800;font-size:20px;color:var(--brand)}
+.back{background:none;color:var(--muted);width:auto;padding:6px 0;font-weight:500;font-size:14px}
+.hero{background:linear-gradient(135deg,var(--brand),#8E6CFF);color:#fff;border:0}
+.hero .muted{color:rgba(255,255,255,.85)}
+.count{display:flex;gap:8px;margin-top:12px}
+.count div{flex:1;background:rgba(255,255,255,.16);border-radius:12px;padding:8px 0;text-align:center}
+.count b{display:block;font:800 24px/1 "Baloo 2"}
+.count span{font-size:11px;opacity:.85}
+.task{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:16px;padding:14px;font-weight:500}
+.task .ico{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:var(--brand-soft)}
+.task .t{flex:1}
+.task .t b{display:block;font-size:15px}
+.task .t span{font-size:13px;color:var(--muted)}
+.task.done{border-color:var(--mint)}
+.task.done .ico{background:var(--mint-soft)}
+.opts{display:grid;gap:8px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:14px;padding:13px;font-weight:500;font-size:15px;text-align:left}
+.opt.sel{border-color:var(--brand);background:var(--brand-soft)}
+.q{margin-top:18px}
+.q h3{margin-bottom:8px}
+.progress{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--sun);border-radius:99px;transition:width .3s}
+.levels{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.lv{border-radius:14px;padding:10px 4px;text-align:center;background:var(--card);border:1.5px solid var(--line);font-size:12px;font-weight:600}
+.lv .e{font-size:22px;display:block}
+.lv.done{background:var(--mint-soft);border-color:var(--mint)}
+.lv.now{border-color:var(--sun);background:var(--sun-soft)}
+.lv.lock{opacity:.7;border-style:dashed}
+.big{font:800 44px/1.1 "Baloo 2";text-align:center;margin:18px 0 6px}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.answers button{font:800 26px/1 "Baloo 2";padding:18px 0;background:var(--card);color:var(--ink);border:2px solid var(--line)}
+.answers button.right{background:var(--mint-soft);border-color:var(--mint);color:var(--mint)}
+.answers button.wrong{background:var(--rose-soft);border-color:var(--rose);color:var(--rose)}
+.owl{font-size:56px;text-align:center;line-height:1}
+.bubble{background:var(--sun-soft);border-radius:16px;padding:12px 14px;margin-top:8px;font-weight:500}
+.power{border-radius:22px;padding:20px;color:#fff;background:linear-gradient(160deg,#FF8A00,#FF3D77 60%,#7B3DF5);box-shadow:var(--shadow);margin-top:14px}
+.power .k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+.power .name{font:800 30px/1.1 "Baloo 2";margin-top:6px}
+.power .sp{font:800 22px/1.2 "Baloo 2";margin-top:10px}
+.stars{font-size:22px;letter-spacing:2px}
+.code{display:inline-block;margin-top:8px;background:rgba(255,255,255,.2);border:1.5px dashed rgba(255,255,255,.8);border-radius:12px;padding:8px 14px;font:800 22px/1 "Baloo 2";letter-spacing:.08em}
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line)}
+.check:first-child{border-top:0}
+.check input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--brand);flex:none}
+.timeline{list-style:none;padding:0;margin:8px 0 0}
+.timeline li{display:flex;gap:12px;padding:8px 0}
+.timeline .tm{flex:none;width:56px;font-weight:700;color:var(--brand);font-size:13px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;font-weight:500;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw}
+.toast.on{opacity:1}
+.debug{margin-top:24px;font:12px/1.5 ui-monospace,Menlo,monospace;background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:10px;color:var(--muted);white-space:pre-wrap;word-break:break-word}
+.hide{display:none!important}
+input[type=text]{width:100%;font:16px Inter,sans-serif;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink)}
+.shake{animation:sh .3s}
+@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.pop{animation:pop .35s ease-out}
+@keyframes pop{0%{transform:scale(.9);opacity:0}100%{transform:scale(1);opacity:1}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------- Setup: personalisation comes from the WhatsApp link ----------
+   ?child=Aarav&parent=Priya&grade=4&teacher=Ms.%20Kavya&slot=2026-11-02T18:00
+   Everything is stored locally (no backend) so the prototype works as a single file. */
+const P = new URLSearchParams(location.search);
+const defaultSlot = (() => { const d = new Date(); d.setDate(d.getDate() + 4); d.setHours(18, 0, 0, 0); return d; })();
+const CFG = {
+  child: P.get("child") || "Aarav",
+  parent: P.get("parent") || "Priya",
+  teacher: P.get("teacher") || "Ms. Kavya",
+  grade: +(P.get("grade") || 0),
+  slot: P.get("slot") ? new Date(P.get("slot")) : defaultSlot,
+  debug: P.has("debug"),
+};
+const KEY = "bhanzu-quest:" + CFG.child + ":" + CFG.slot.toISOString().slice(0, 16);
+const blank = { parentDone: false, prep: {}, answers: {}, quest: { level: 0, scores: [0, 0, 0], done: false }, daily: {}, confirmed: false, events: [] };
+let S = load();
+
+function load() { try { return Object.assign(structuredClone(blank), JSON.parse(localStorage.getItem(KEY) || "{}")); } catch { return structuredClone(blank); } }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} }
+function track(name, data = {}) {
+  // In production these go to the analytics pipeline with the booking id; here they are kept locally and shown with ?debug
+  S.events.push({ t: new Date().toISOString().slice(11, 19), name, ...data });
+  save();
+  if (CFG.debug) renderDebug();
+}
+
+/* ---------- Helpers ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const app = $("#app");
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmtSlot = (d) => d.toLocaleString("en-IN", { weekday: "short", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" });
+const daysLeft = () => Math.max(0, Math.ceil((startOfDay(CFG.slot) - startOfDay(new Date())) / 864e5));
+function startOfDay(d) { const x = new Date(d); x.setHours(0, 0, 0, 0); return x; }
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.classList.add("on"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("on"), 2200); }
+function gradeBand() { const g = S.answers.grade || CFG.grade || 4; return g <= 2 ? 0 : g <= 5 ? 1 : 2; }
+function seeded(n) { let x = Math.sin(n) * 10000; return x - Math.floor(x); }
+function shuffle(a, seed) { return a.map((v, i) => [seeded(seed + i), v]).sort((p, q) => p[0] - q[0]).map((p) => p[1]); }
+const childCode = () => { const words = ["ORBIT", "COMET", "PRISM", "ROCKET", "NOVA", "PIXEL"]; const n = [...CFG.child].reduce((a, c) => a + c.charCodeAt(0), 0); return words[n % words.length] + "-" + ((n % 9) + 1); };
+
+/* ---------- Screens ---------- */
+const screens = { home, parent, quest, power, daily, reschedule };
+function go(name, arg) { window.scrollTo(0, 0); screens[name](arg); track("view", { screen: name }); }
+
+function header(back) {
+  return `<div class="topbar">${back ? `<button class="back" onclick="go('home')">← Back</button>` : `<span class="logo">bhanzu</span>`}<span class="pill">Free class · ${esc(fmtSlot(CFG.slot))}</span></div>`;
+}
+
+function home() {
+  const ms = CFG.slot - new Date();
+  const d = Math.max(0, Math.floor(ms / 864e5)), h = Math.max(0, Math.floor((ms % 864e5) / 36e5)), m = Math.max(0, Math.floor((ms % 36e5) / 6e4));
+  const qDone = S.quest.done, pDone = S.parentDone;
+  const todayKey = new Date().toDateString();
+  const dailyDone = !!S.daily[todayKey];
+  app.innerHTML = `
+    ${header()}
+    <div class="card hero pop">
+      <div class="muted small">Hi ${esc(CFG.parent)} 👋</div>
+      <h1 style="margin-top:4px">${esc(CFG.child)}'s live math class is booked</h1>
+      <p class="muted" style="margin-top:6px">${esc(fmtSlot(CFG.slot))} with ${esc(CFG.teacher)} · 60 min · on Zoom</p>
+      <div class="count"><div><b>${d}</b><span>days</span></div><div><b>${h}</b><span>hours</span></div><div><b>${m}</b><span>mins</span></div></div>
+    </div>
+
+    <div class="card">
+      <div class="row between"><h3>Before the class</h3><span class="pill sun">${(pDone ? 1 : 0) + (qDone ? 1 : 0)} of 2 done</span></div>
+      <p class="small muted">${esc(CFG.teacher)} reads these before class so the 60 minutes are about ${esc(CFG.child)}, not a generic lesson.</p>
+      <div class="stack" style="margin-top:12px">
+        <button class="task ${pDone ? "done" : ""}" onclick="go('parent')">
+          <span class="ico">${pDone ? "✅" : "📝"}</span>
+          <span class="t"><b>For you · 1 minute</b><span>${pDone ? "Shared with " + esc(CFG.teacher) : "Tell us about " + esc(CFG.child) + " + class checklist"}</span></span><span>›</span>
+        </button>
+        <button class="task ${qDone ? "done" : ""}" onclick="go('quest')">
+          <span class="ico">${qDone ? "🏅" : "🚀"}</span>
+          <span class="t"><b>For ${esc(CFG.child)} · 5 minutes</b><span>${qDone ? "3 of 4 levels cleared · Boss level unlocks in class" : "Math Quest: 3 levels to clear before class"}</span></span><span>›</span>
+        </button>
+        ${qDone ? `<button class="task ${dailyDone ? "done" : ""}" onclick="go('daily')">
+          <span class="ico">${dailyDone ? "⭐" : "🧩"}</span>
+          <span class="t"><b>Today's brain teaser</b><span>${dailyDone ? "Done for today · new one tomorrow" : "One new puzzle each day until class"}</span></span><span>›</span>
+        </button>` : ""}
+      </div>
+    </div>
+
+    ${qDone ? `<div class="card"><h3>${esc(CFG.child)}'s Power Card</h3><p class="small muted">Ready to show ${esc(CFG.teacher)} in class.</p><button class="ghost" style="margin-top:10px" onclick="go('power')">Open Power Card</button></div>` : ""}
+
+    <div class="card">
+      <h3>What happens in the class</h3>
+      <ul class="timeline">
+        <li><span class="tm">0 to 5</span><span>${esc(CFG.teacher)} says hello and asks ${esc(CFG.child)} about the quest</span></li>
+        <li><span class="tm">5 to 45</span><span>Live, game based math at ${esc(CFG.child)}'s level. Cameras on, lots of talking</span></li>
+        <li><span class="tm">45 to 60</span><span>Boss level challenge + you can join for the last 5 minutes</span></li>
+        <li><span class="tm">After</span><span>A short call to share ${esc(CFG.child)}'s strengths and gaps. No pressure to enroll.</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="row between">
+        <div><h3>${S.confirmed ? "You're confirmed ✅" : "Will you make it?"}</h3><p class="small muted">${S.confirmed ? "We'll send the join link 30 minutes before." : "Helps us keep a seat and a teacher ready for " + esc(CFG.child) + "."}</p></div>
+      </div>
+      ${S.confirmed ? `<button class="link" onclick="go('reschedule')">Need a different time?</button>` : `<div class="stack" style="margin-top:10px"><button onclick="confirmSeat()">Yes, we'll be there</button><button class="ghost" onclick="go('reschedule')">Pick another time</button></div>`}
+    </div>
+    ${CFG.debug ? `<div class="debug" id="debug"></div>` : ""}
+  `;
+  if (CFG.debug) renderDebug();
+}
+
+function confirmSeat() { S.confirmed = true; save(); track("confirm_attendance"); toast("Seat confirmed for " + CFG.child); home(); }
+
+/* Parent: 4 taps. Feeds the teacher (personalised demo) and the AC call (the parent's own goal, in their words). */
+const PQ = [
+  { id: "grade", q: "Which class is {child} in?", opts: [1, 2, 3, 4, 5, 6, 7, 8].map((g) => ({ v: g, l: "Class " + g })), two: true },
+  { id: "feel", q: "How does {child} feel about math right now?", opts: [
+    { v: "loves", l: "😍 Loves it, wants more" }, { v: "ok", l: "🙂 Okay, but takes time" },
+    { v: "scared", l: "😟 Gets nervous or avoids it" }, { v: "bored", l: "😴 Finds school math boring" } ] },
+  { id: "goal", q: "What would make you happy after 3 months?", opts: [
+    { v: "confidence", l: "More confidence, less fear" }, { v: "marks", l: "Better marks in school" },
+    { v: "speed", l: "Faster mental math" }, { v: "love", l: "Actually enjoying math" } ] },
+  { id: "device", q: "Which device will {child} join on?", opts: [
+    { v: "laptop", l: "💻 Laptop" }, { v: "tablet", l: "📱 Tablet" }, { v: "phone", l: "📱 Phone" }, { v: "unsure", l: "Not sure yet" } ], two: true },
+];
+function parent() {
+  const done = PQ.every((q) => S.answers[q.id] != null);
+  const fill = (s) => s.replace("{child}", esc(CFG.child));
+  app.innerHTML = `
+    ${header(true)}
+    <h2>Tell ${esc(CFG.teacher)} about ${esc(CFG.child)}</h2>
+    <p class="muted small">4 taps. Your teacher reads this before class.</p>
+    ${PQ.map((q) => `<div class="q"><h3>${fill(q.q)}</h3><div class="opts ${q.two ? "two" : ""}">
+      ${q.opts.map((o) => `<button class="opt ${S.answers[q.id] === o.v ? "sel" : ""}" onclick='answer("${q.id}", ${JSON.stringify(o.v)})'>${o.l}</button>`).join("")}
+    </div></div>`).join("")}
+    <div class="card">
+      <h3>Class day checklist</h3>
+      ${[
+        ["spot", "A quiet spot with the device on a table, not in hand"],
+        ["charge", "Device charged and Zoom opened once before"],
+        ["early", "Join 5 minutes early (we'll message the link)"],
+        ["stay", "You stay nearby for the last 5 minutes to hear how it went"],
+      ].map(([k, l]) => `<label class="check"><input type="checkbox" ${S.prep[k] ? "checked" : ""} onchange="prep('${k}', this.checked)"><span>${l}</span></label>`).join("")}
+    </div>
+    <div class="stack" style="margin-top:14px">
+      <button ${done ? "" : "disabled"} onclick="finishParent()">Share with ${esc(CFG.teacher)}</button>
+      <a class="btn ghost" href="${calLink()}" target="_blank" rel="noopener" onclick="track('add_to_calendar')">Add class to Google Calendar</a>
+    </div>
+  `;
+}
+function answer(id, v) { S.answers[id] = v; save(); track("parent_answer", { id, v }); parent(); }
+function prep(k, v) { S.prep[k] = v; save(); track("checklist", { k, v }); }
+function finishParent() { S.parentDone = true; save(); track("parent_done", S.answers); toast("Shared with " + CFG.teacher); go("home"); }
+function calLink() {
+  const f = (d) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  const end = new Date(CFG.slot.getTime() + 60 * 6e4);
+  const text = encodeURIComponent(CFG.child + "'s free Bhanzu math class");
+  const details = encodeURIComponent("Live class with " + CFG.teacher + ". Join link comes on WhatsApp 30 minutes before. Keep the device charged and join 5 minutes early.");
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=${f(CFG.slot)}/${f(end)}&details=${details}`;
+}
+
+/* ---------- Child quest: 3 short levels, level 4 is deliberately locked until the live class ---------- */
+const LEVELS = [
+  { name: "Speedy Sums", emoji: "⚡", intro: "Answer 5 sums as fast as you can. No pressure, just fun!" },
+  { name: "Pattern Hunter", emoji: "🔍", intro: "Find what comes next. Look closely!" },
+  { name: "Puzzle Master", emoji: "🧠", intro: "Tricky ones! Take your time." },
+  { name: "Boss Level", emoji: "👑", intro: "" },
+];
+function bank(level) {
+  const b = gradeBand();
+  if (level === 0) {
+    const r = [[2, 9], [6, 30], [12, 60]][b];
+    return [0, 1, 2, 3, 4].map((i) => {
+      const a = Math.floor(seeded(i * 7 + b) * (r[1] - r[0])) + r[0], c = Math.floor(seeded(i * 13 + b) * (r[1] - r[0])) + r[0];
+      const op = b === 2 && i % 2 ? "×" : "+";
+      const x = op === "×" ? Math.max(2, a % 13) : a, y = op === "×" ? Math.max(2, c % 10) : c;
+      const ans = op === "×" ? x * y : x + y;
+      return { q: `${x} ${op} ${y}`, a: ans, opts: shuffle([ans, ans + 1, ans - 2, ans + 10].filter((v, j, s) => s.indexOf(v) === j), i) };
+    });
+  }
+  if (level === 1) {
+    const sets = [
+      [{ q: "2, 4, 6, 8, ?", a: 10, opts: [9, 10, 12, 11] }, { q: "🍎🍌🍎🍌🍎 ?", a: "🍌", opts: ["🍎", "🍌", "🍇", "🍊"] }, { q: "5, 10, 15, ?", a: 20, opts: [18, 20, 25, 16] }],
+      [{ q: "3, 6, 12, 24, ?", a: 48, opts: [36, 48, 30, 42] }, { q: "1, 4, 9, 16, ?", a: 25, opts: [20, 25, 24, 32] }, { q: "50, 45, 40, ?", a: 35, opts: [30, 35, 38, 45] }],
+      [{ q: "2, 3, 5, 8, 13, ?", a: 21, opts: [18, 21, 20, 26] }, { q: "1, 8, 27, 64, ?", a: 125, opts: [100, 125, 81, 128] }, { q: "7, 14, 28, 56, ?", a: 112, opts: [84, 112, 70, 98] }],
+    ];
+    return sets[b];
+  }
+  const sets = [
+    [{ q: "🐔 + 🐔 = 10. What is 🐔?", a: 5, opts: [4, 5, 6, 10] }, { q: "I have 3 bags with 4 sweets each. How many sweets?", a: 12, opts: [7, 12, 10, 14] }],
+    [{ q: "🌟 × 3 = 24. What is 🌟?", a: 8, opts: [6, 7, 8, 9] }, { q: "Half of a number is 18. What is the number?", a: 36, opts: [9, 36, 27, 32] }],
+    [{ q: "x + x + x = 45. What is x?", a: 15, opts: [12, 15, 18, 13] }, { q: "A train leaves at 9:45 and the trip is 1 h 35 min. When does it arrive?", a: "11:20", opts: ["11:10", "11:20", "11:30", "10:80"] }],
+  ];
+  return sets[b];
+}
+
+let run = null;
+function quest() {
+  if (S.quest.done) return go("power");
+  const L = S.quest.level;
+  app.innerHTML = `
+    ${header(true)}
+    <h2>${esc(CFG.child)}'s Math Quest</h2>
+    <p class="muted small">Clear 3 levels now. The 4th level only opens live in class with ${esc(CFG.teacher)}.</p>
+    <div class="levels">${LEVELS.map((l, i) => `<div class="lv ${i < L ? "done" : i === L ? "now" : i === 3 ? "lock" : ""}"><span class="e">${i === 3 ? "🔒" : i < L ? "✅" : l.emoji}</span>${l.name}</div>`).join("")}</div>
+    <div class="card pop" style="text-align:center">
+      <div class="owl">🦉</div>
+      <div class="bubble">Hi ${esc(CFG.child)}! I'm Ganit the owl. <b>Level ${L + 1}: ${LEVELS[L].name}.</b> ${LEVELS[L].intro}</div>
+      <button style="margin-top:14px" onclick="startLevel()">Start level ${L + 1}</button>
+    </div>
+  `;
+}
+function startLevel() { run = { qs: bank(S.quest.level), i: 0, right: 0, t0: Date.now() }; track("level_start", { level: S.quest.level + 1 }); ask(); }
+function ask() {
+  const q = run.qs[run.i];
+  app.innerHTML = `
+    ${header(true)}
+    <div class="row between"><span class="pill sun">${LEVELS[S.quest.level].emoji} Level ${S.quest.level + 1}</span><span class="small muted">${run.i + 1} of ${run.qs.length}</span></div>
+    <div class="progress" style="margin-top:10px"><span style="width:${(run.i / run.qs.length) * 100}%"></span></div>
+    <div class="big pop" style="${String(q.q).length > 18 ? "font-size:24px" : ""}">${esc(q.q)}</div>
+    <div class="answers">${q.opts.map((o) => `<button onclick='pick(this, ${JSON.stringify(o)})'>${esc(o)}</button>`).join("")}</div>
+  `;
+}
+function pick(el, v) {
+  const q = run.qs[run.i];
+  const ok = String(v) === String(q.a);
+  [...el.parentNode.children].forEach((b) => (b.disabled = true));
+  el.classList.add(ok ? "right" : "wrong");
+  if (!ok) { el.classList.add("shake"); [...el.parentNode.children].find((b) => b.textContent === String(q.a))?.classList.add("right"); }
+  if (ok) run.right++;
+  setTimeout(() => { run.i++; run.i < run.qs.length ? ask() : endLevel(); }, ok ? 450 : 900);
+}
+function endLevel() {
+  const L = S.quest.level, secs = Math.round((Date.now() - run.t0) / 1000);
+  S.quest.scores[L] = run.right / run.qs.length;
+  track("level_done", { level: L + 1, right: run.right, of: run.qs.length, secs });
+  S.quest.level = L + 1;
+  if (S.quest.level >= 3) { S.quest.done = true; track("quest_done", { scores: S.quest.scores }); }
+  save();
+  const cheers = ["Wow, speedy!", "Sharp eyes!", "Big brain move!"];
+  app.innerHTML = `
+    ${header(true)}
+    <div class="card pop" style="text-align:center">
+      <div class="owl">${S.quest.done ? "🏆" : "🎉"}</div>
+      <h2 style="margin-top:8px">${cheers[L]} Level ${L + 1} cleared</h2>
+      <p class="muted">${run.right} of ${run.qs.length} right in ${secs} seconds</p>
+      ${S.quest.done
+        ? `<div class="bubble" style="margin-top:12px">You cleared 3 of 4 levels! The <b>Boss Level</b> is locked. Only ${esc(CFG.teacher)} can open it, live in class on ${esc(fmtSlot(CFG.slot))}.</div>
+           <button style="margin-top:14px" onclick="go('power')">See my Power Card</button>`
+        : `<button style="margin-top:14px" onclick="quest()">Next level</button>`}
+    </div>
+    <div class="levels">${LEVELS.map((l, i) => `<div class="lv ${i < S.quest.level ? "done" : i === 3 ? "lock" : ""}"><span class="e">${i === 3 ? "🔒" : i < S.quest.level ? "✅" : l.emoji}</span>${l.name}</div>`).join("")}</div>
+  `;
+}
+
+function superpower() {
+  const [a, b, c] = S.quest.scores;
+  const best = Math.max(a, b, c);
+  if (best === b) return ["Pattern Spotter", "sees what comes next before others do"];
+  if (best === c) return ["Puzzle Cracker", "doesn't give up on tricky problems"];
+  return ["Speed Calculator", "is quick and confident with numbers"];
+}
+function power() {
+  const [sp, why] = superpower();
+  const avg = S.quest.scores.reduce((x, y) => x + y, 0) / 3;
+  const stars = Math.max(1, Math.round(avg * 5));
+  const share = encodeURIComponent(`${CFG.child} cleared 3 of 4 levels of the Bhanzu Math Quest! Superpower: ${sp} 🚀 Boss level unlocks in class on ${fmtSlot(CFG.slot)}.`);
+  app.innerHTML = `
+    ${header(true)}
+    <div class="power pop">
+      <div class="k">Bhanzu Power Card</div>
+      <div class="name">${esc(CFG.child)}</div>
+      <div class="stars">${"★".repeat(stars)}${"☆".repeat(5 - stars)}</div>
+      <div class="sp">Superpower: ${sp}</div>
+      <p style="margin:4px 0 0;opacity:.95">${esc(CFG.child)} ${why}.</p>
+      <div style="margin-top:14px;font-size:13px;opacity:.9">Secret code to unlock the Boss Level in class:</div>
+      <div class="code">${childCode()}</div>
+    </div>
+    <div class="card">
+      <h3>For ${esc(CFG.child)}</h3>
+      <p>Say the secret code to ${esc(CFG.teacher)} at the start of class to open the Boss Level and get the 👑 badge.</p>
+      <h3 style="margin-top:12px">For you, ${esc(CFG.parent)}</h3>
+      <p class="small muted">${esc(CFG.teacher)} will see this card and start the class from ${esc(CFG.child)}'s strongest area, so the first minutes feel like a win.</p>
+      <div class="stack" style="margin-top:12px">
+        <a class="btn" href="https://wa.me/?text=${share}" target="_blank" rel="noopener" onclick="track('share_power_card')">Share on WhatsApp</a>
+        <button class="ghost" onclick="go('home')">Back to class page</button>
+      </div>
+    </div>
+  `;
+}
+
+/* One teaser a day keeps the class top of mind on day 2, 3, 4 of a long gap */
+const TEASERS = [
+  { q: "What is 25 + 25 + 25 + 25?", a: "100", opts: ["75", "100", "125", "90"], fact: "Bhanu Sir adds numbers like this in his head in under a second." },
+  { q: "Which is bigger: 9 × 9 or 80?", a: "9 × 9", opts: ["9 × 9", "80", "Same"], fact: "9 × 9 = 81, just one more than 80!" },
+  { q: "How many sides do 3 triangles have in total?", a: "9", opts: ["6", "9", "12", "3"], fact: "Triangles are the strongest shape. That's why bridges use them." },
+  { q: "Double 45, then add 10", a: "100", opts: ["90", "95", "100", "110"], fact: "Doubling is the fastest mental math trick there is." },
+  { q: "What comes next: 1, 1, 2, 3, 5, ?", a: "8", opts: ["6", "7", "8", "10"], fact: "This is the Fibonacci pattern. It shows up in sunflowers!" },
+];
+function daily() {
+  const key = new Date().toDateString();
+  const t = TEASERS[Math.floor(startOfDay(new Date()) / 864e5) % TEASERS.length];
+  const done = S.daily[key];
+  app.innerHTML = `
+    ${header(true)}
+    <span class="pill">🧩 Today's brain teaser · ${daysLeft()} day${daysLeft() === 1 ? "" : "s"} to class</span>
+    <div class="big pop" style="font-size:26px">${esc(t.q)}</div>
+    <div class="answers">${t.opts.map((o) => `<button ${done ? "disabled" : ""} class="${done && o === t.a ? "right" : ""}" onclick='teaser(this, ${JSON.stringify(o)}, ${JSON.stringify(t.a)}, ${JSON.stringify(key)})'>${esc(o)}</button>`).join("")}</div>
+    <div class="bubble ${done ? "" : "hide"}" id="fact">💡 ${esc(t.fact)}</div>
+    <button class="ghost" style="margin-top:16px" onclick="go('home')">Back</button>
+  `;
+}
+function teaser(el, v, a, key) {
+  const ok = v === a;
+  el.classList.add(ok ? "right" : "wrong");
+  [...el.parentNode.children].forEach((b) => { b.disabled = true; if (b.textContent === a) b.classList.add("right"); });
+  S.daily[key] = { ok }; save(); track("daily_teaser", { ok });
+  $("#fact").classList.remove("hide");
+}
+
+/* A no-show is usually a silent reschedule. Make the reschedule one tap so we keep the parent. */
+function reschedule() {
+  const base = new Date(); base.setMinutes(0, 0, 0);
+  const slots = [1, 1, 2, 2, 3].map((d, i) => { const x = new Date(base); x.setDate(x.getDate() + d); x.setHours(i % 2 ? 18 : 11); return x; });
+  app.innerHTML = `
+    ${header(true)}
+    <h2>No problem. Pick a time that works</h2>
+    <p class="muted small">${esc(CFG.child)}'s quest progress and Power Card move with the class.</p>
+    <div class="opts" style="margin-top:14px">${slots.map((s) => `<button class="opt" onclick='moveTo(${JSON.stringify(s.toISOString())})'>${esc(fmtSlot(s))}${s - new Date() < 2 * 864e5 ? ' <span class="pill mint" style="margin-left:6px">Soonest</span>' : ""}</button>`).join("")}</div>
+    <button class="link" onclick="track('reschedule_none'); toast('An advisor will WhatsApp you to find a time'); go('home')">None of these work</button>
+  `;
+}
+function moveTo(iso) {
+  track("rescheduled", { from: CFG.slot.toISOString(), to: iso });
+  const old = KEY;
+  CFG.slot = new Date(iso);
+  S.confirmed = true;
+  const p = new URLSearchParams(location.search); p.set("slot", iso.slice(0, 16)); history.replaceState(null, "", "?" + p.toString());
+  try { localStorage.setItem("bhanzu-quest:" + CFG.child + ":" + CFG.slot.toISOString().slice(0, 16), JSON.stringify(S)); localStorage.removeItem(old); } catch {}
+  toast("Moved to " + fmtSlot(CFG.slot));
+  location.reload();
+}
+
+function renderDebug() {
+  const el = $("#debug"); if (!el) return;
+  el.textContent = "Events (sent to analytics in production)\n" + S.events.slice(-14).map((e) => JSON.stringify(e)).join("\n");
+}
+
+if (CFG.grade && S.answers.grade == null) S.answers.grade = CFG.grade;
+track("open", { days_to_class: daysLeft() });
+go("home");
+setInterval(() => { if (app.querySelector(".count")) home(); }, 60000);
+</script>
+</body>
+</html>
